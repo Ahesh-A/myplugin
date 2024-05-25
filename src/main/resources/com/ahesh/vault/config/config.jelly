@@ -4,9 +4,7 @@
     <f:entry field="name" title="Your Name">
         <f:textbox/>
     </f:entry>
-
     <f:entry field="password" title="Password">
         <c:select/>
     </f:entry>
-
 </j:jelly>
