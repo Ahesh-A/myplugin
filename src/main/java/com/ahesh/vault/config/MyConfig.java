@@ -32,7 +32,7 @@ public class MyConfig extends AbstractDescribableImpl<MyConfig> implements Seria
 
     public MyConfig(MyConfig config) {
         this.name = config.name;
-        this.password = config.password;
+        this.passwordId = config.passwordId;
     }
     public StringCredentials getPassword() {
         return password;
@@ -40,7 +40,9 @@ public class MyConfig extends AbstractDescribableImpl<MyConfig> implements Seria
     public String getName() {
         return name;
     }
-
+    public String getPasswordId(){
+        return passwordId;
+    }
     @DataBoundSetter
     public void setName(String name) {
         this.name = fixEmptyAndTrim(name);
@@ -64,7 +66,7 @@ public class MyConfig extends AbstractDescribableImpl<MyConfig> implements Seria
             return "My Config";
         }
 
-        public ListBoxModel doFillPasswordItems(@AncestorInPath Item item, @QueryParameter String uri) {
+        public ListBoxModel doFillPasswordIdItems(@AncestorInPath Item item, @QueryParameter String uri) {
             Jenkins.get().checkPermission(Jenkins.ADMINISTER);
             List<DomainRequirement> domainRequirements = URIRequirementBuilder.fromUri(uri).build();
             return new StandardListBoxModel().includeEmptyValue().includeAs(ACL.SYSTEM2, item, StringCredentials.class, domainRequirements);
