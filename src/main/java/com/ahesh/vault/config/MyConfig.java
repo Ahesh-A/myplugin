@@ -73,7 +73,8 @@ public class MyConfig extends AbstractDescribableImpl<MyConfig> implements Seria
 
         public ListBoxModel doFillPasswordIdItems(@AncestorInPath Item item, @QueryParameter String uri) {
             Jenkins.get().checkPermission(Jenkins.ADMINISTER);
-            List<DomainRequirement> domainRequirements = URIRequirementBuilder.fromUri(uri).build();
+            List<DomainRequirement> domainRequirements =
+                    URIRequirementBuilder.fromUri(uri).build();
 
             return new StandardListBoxModel()
                     .includeEmptyValue()
