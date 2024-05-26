@@ -1,9 +1,7 @@
 package com.ahesh.vault.config;
 
-import edu.umd.cs.findbugs.annotations.NonNull;
 import hudson.Extension;
 import hudson.ExtensionList;
-import hudson.model.Item;
 import jenkins.model.GlobalConfiguration;
 import net.sf.json.JSONObject;
 import org.kohsuke.stapler.DataBoundSetter;
@@ -35,14 +33,5 @@ public class MyConfigGlobal extends GlobalConfiguration {
     public void setConfig(MyConfig config) {
         this.config = config;
         save();
-    }
-
-    @Extension(ordinal = 0)
-    public static class ForJob extends MyConfigResolver {
-        @NonNull
-        @Override
-        public MyConfig forJob(@NonNull Item item) {
-            return MyConfigGlobal.get().getConfig();
-        }
     }
 }
